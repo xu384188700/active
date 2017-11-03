@@ -1,10 +1,10 @@
 window.onload = function(){
-    var content = document.querySelectorAll("#content");
+    var content = document.querySelector("#content");
     var cList = document.querySelector("#content .list");
     var cLiNodes = document.querySelectorAll("#content .list > li");
     var head = document.querySelector("#head");
     var nList = document.querySelectorAll("#head .wrap .nav > li");
-    var dot = document.querySelectorAll("#content .dot > li");
+    var dot = document.querySelectorAll("#content .round > li");
 
 
     var now = 0;
@@ -274,7 +274,7 @@ window.onload = function(){
         }
         dot[index].className = "active";
 
-        cList.style.top = -index *(document.documentElement.clientHeight - head.offsetHeight) + "px";
+        cList.style.top = -index *(document.documentElement.clientHeight-head.offsetHeight) + "px";
 
         //出入场逻辑
         if(animationAttr[index]&&animationAttr[index]["inAn"]){
@@ -287,14 +287,19 @@ window.onload = function(){
 
     window.onresize = function (){
         contentBind();
+
     }
+    // console.log(document.documentElement.clientHeight)
+
+
     //内容区的高度
     contentBind();
     function contentBind(){
-
-        content.style.height = document.documentElement.clientHeight - head.offsetHeight + "px";
+        // content.style.height = (document.documentElement.clientHeight - head.offsetHeight) + "px";
+        var height=(document.documentElement.clientHeight - head.offsetHeight);
+        content.style.height = height + "px";
         for(var i=0;i<cLiNodes.length;i++){
-            cLiNodes[i].style.height = document.documentElement.clientHeight - head.offsetHeight + "px";
+            cLiNodes[i].style.height = height + "px";
 
         }
     }
